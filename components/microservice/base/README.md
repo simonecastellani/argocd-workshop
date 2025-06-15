@@ -1,0 +1,1 @@
+# Base manifests for microservice

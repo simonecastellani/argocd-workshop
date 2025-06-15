@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argocd
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - list:
+      elements:
+      - url: https://kubernetes.default.svc
+        repo: https://github.com/simonecastellani/kustomize-workshop
+        path: components/argocd
+      - url: https://kubernetes.default.svc
+        repo: https://github.com/simonecastellani/kustomize-workshop
+        path: components/argoproj
+  template:
+    metadata:
+      name: 'shop-shop-application'
+    spec:
+      project: default
+      source:
+        repoURL: {{.repo}}
+        targetRevision: HEAD
+        path: {{.path}}
+      destination:
+        server: '{{.url}}'
+        namespace: guestbook
