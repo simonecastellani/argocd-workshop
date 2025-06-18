@@ -5,12 +5,10 @@ metadata:
   namespace: microservice
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/auth-url: "http://dex.dex.svc.cluster.local:5001/token/verify"
 spec:
   ingressClassName: nginx
   rules:
-  - host: 192.168.214.20
-    http:
+  - http:
       paths:
         - path: /microservice
           pathType: Prefix
