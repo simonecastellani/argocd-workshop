@@ -4,19 +4,19 @@ metadata:
   name: microservice-deployment
   namespace: microservices
   labels:
-    app: microservice
+    app: microservice2
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: microservice
+      app: microservice2
   template:
     metadata:
       labels:
-        app: microservice
+        app: microservice2
     spec:
       containers:
-      - name: microservice
+      - name: microservice2
         image: nginx:stable
         volumeMounts:
           - name: nginx-config-volume
