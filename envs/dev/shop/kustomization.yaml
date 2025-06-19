@@ -6,5 +6,3 @@ namePrefix: dev-
 
 resources:
   - ../../../clusters/overlays/shop
-  - microservice-config.yaml
-  - microservice2-config.yaml

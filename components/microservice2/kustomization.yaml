@@ -4,6 +4,7 @@ kind: Kustomization
 namespace: microservices
 
 resources:
+  - config.yaml
   - deploy.yaml
   - ingress.yaml
   - service.yaml
