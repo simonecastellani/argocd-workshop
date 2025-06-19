@@ -2,7 +2,9 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 # includes the base configuration for the development environment and clusters
 
+namePrefix: dev-
+
 resources:
-  - ../../../../clusters/shop/overlays/components/
-  - microservice/config.yaml
-  - microservice2/config.yaml
+  - ../../../clusters/overlays/shop
+  - microservice-config.yaml
+  - microservice2-config.yaml

@@ -3,4 +3,6 @@ kind: Kustomization
 
 # includes the base configuration for the shop application
 resources:
-  - ../../../../components/microservice/base
+  - ../../base
+  - clusters-secrets.yaml
+  - repos-secrets.yaml
