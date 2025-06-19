@@ -4,4 +4,5 @@ kind: Kustomization
 # includes the base configuration for the development environment and clusters
 resources:
   - ../../../base/shop
+  - ../../../../envs/dev/shop
   - microservices-app-of-apps.yaml
