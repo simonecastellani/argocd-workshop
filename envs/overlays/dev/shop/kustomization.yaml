@@ -5,3 +5,4 @@ kind: Kustomization
 resources:
   - ../../../../clusters/shop/overlays/components/
   - microservice/config.yaml
+  - microservice2/config.yaml

@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: microservice
+  namespace: argocd
+spec:
+  project: default
+  source:
+    path: components/microservice2
+    repoURL: https://github.com/simonecastellani/kustomize-workshop # Update with your repo URL
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: microservices
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
