@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: microservice-deployment
+  name: microservice2-deployment
   namespace: microservices
   labels:
     app: microservice2
