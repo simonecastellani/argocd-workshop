@@ -5,5 +5,5 @@ kind: Kustomization
 resources:
   - ../../../components/argocd
   - ../../../components/ingress-nginx
-  - argocd-app-of-apps.yaml
-  - ingress-nginx-app-of-apps.yaml
+  - ../../../app-of-apps/base/argocd-app-of-apps
+  - ../../../app-of-apps/base/ingress-nginx-app-of-apps

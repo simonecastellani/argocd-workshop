@@ -5,4 +5,4 @@ kind: Kustomization
 resources:
   - ../../../base/shop
   - ../../../../envs/dev/shop
-  - microservices-app-of-apps.yaml
+  - ../../../../app-of-apps/overlays/dev/shop

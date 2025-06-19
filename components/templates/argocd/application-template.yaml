@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-name # Will be patched
+  namespace: argocd
+  annotations:
+    # Annotations for customization
+    app.kubernetes.io/component-name: ""
+    app.kubernetes.io/destination-namespace: ""
+    app.kubernetes.io/source-path: ""
+spec:
+  project: default
+  source:
+    path: components/app-name # Will be patched based on annotations
+    repoURL: https://github.com/simonecastellani/kustomize-workshop # Can be overridden
+    targetRevision: HEAD
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default # Will be patched based on annotations
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

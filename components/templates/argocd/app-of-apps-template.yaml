@@ -1,20 +1,23 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: microservices-app-of-apps
+  name: app-of-apps-name # Will be patched
   namespace: argocd
+  annotations:
+    # Annotations for customization
+    app.kubernetes.io/app-of-apps-type: "" # e.g., "microservices", "argocd", "ingress-nginx"
+    app.kubernetes.io/destination-namespace: ""
 spec:
   project: default
   source:
     repoURL: https://github.com/simonecastellani/kustomize-workshop
     targetRevision: HEAD
-    path: app-of-apps/microservices
+    path: app-of-apps/app-name # Will be patched based on annotations
     directory:
       recurse: true
-    # The app-of-apps pattern expects child Application manifests in this path
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: microservices
+    namespace: default # Will be patched based on annotations
   syncPolicy:
     automated:
       prune: true
