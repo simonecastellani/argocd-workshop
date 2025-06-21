@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+resources:
+  - ../../../base
+  #- clusters-secrets.yaml
+  #- repos-secrets.yaml
+
+helmGlobals:
+ chartHome: ../../../../helm-charts
+
+ # This is the path to the helm chart templates directory
+helmCharts:
+
+  - name: argocd-app-of-app
+    valuesFile: values.yaml
+    namespace: microservices
+    includeCRDs: true

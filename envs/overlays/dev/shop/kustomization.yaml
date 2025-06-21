@@ -1,0 +1,21 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namePrefix: dev-
+
+commonLabels:
+  environment: "dev"
+
+# includes the base configuration for the development environment and clusters
+
+resources:
+  - ../../../base/shop
+
+patches:
+  - path: microservice1/config.yaml
+  - path: microservice2/config.yaml
+
+images:
+  - name: nginx
+    newName: nginx
+    newTag: 1.28.0

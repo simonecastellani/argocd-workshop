@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: microservice2
+  name: microservice1
 spec:
   template:
     spec:
       containers:
-      - name: microservice2
+      - name: microservice1
         image: nginx:stable
         volumeMounts:
           - name: nginx-config-volume
@@ -24,4 +24,4 @@ spec:
       volumes:
         - name: nginx-config-volume
           configMap:
-            name: microservice2-nginx-config
+            name: microservice1-nginx-config

@@ -1,0 +1,43 @@
+default:
+  app:
+    enabled: true
+    enableAutoSync: true
+    autoSyncPrune: false
+    project: microservices
+    labels:
+      repo: kustomize-workshop
+    destination:
+      namespace: kustomize-workshop
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/simonecastellani/kustomize-workshop.git
+      targetRevision: HEAD
+
+projects:
+
+  microservices:
+    labels:
+      project: microservices
+    description: Project for overall microservices
+    namespace: microservices
+    sourceRepos:
+    - https://github.com/gnunn-gitops/cluster-config
+    destinations: |
+      - namespace: '*'
+        server: https://kubernetes.default.svc
+    extraFields: |
+      clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
+
+applications:
+
+  microservices:
+    annotations:
+      argocd.argoproj.io/sync-wave: "20"
+    labels:
+      app.kubernetes.io/name: microservices
+    destination:
+      namespace: microservices
+    source:
+      path: clusters/shop/overlays/dev

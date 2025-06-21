@@ -1,7 +1,0 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
-
-# Base bootstrap configuration for all environments
-resources:
-  - ../../../components/argocd
-  - ../../../components/ingress-nginx

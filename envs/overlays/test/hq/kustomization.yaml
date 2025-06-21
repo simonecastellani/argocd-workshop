@@ -1,0 +1,11 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+# includes the base configuration for the development environment and clusters
+
+namePrefix: test-
+
+commonLabels:
+  environment: "test"
+
+resources:
+  - ../../base/hq

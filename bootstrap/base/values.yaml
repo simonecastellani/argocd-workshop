@@ -1,0 +1,47 @@
+default:
+  app:
+    enabled: true
+    enableAutoSync: true
+    autoSyncPrune: false
+    project: infrastructure
+    labels:
+      repo: kustomize-workshop
+    destination:
+      namespace: kustomize-workshop
+      server: https://kubernetes.default.svc
+    source:
+      repoURL: https://github.com/simonecastellani/kustomize-workshop.git
+      targetRevision: HEAD
+
+projects:
+
+  infrastructure:
+    description: Project for overall cluster configuration
+    namespace: infrastructure
+    sourceRepos:
+    - https://github.com/simonecastellani/kustomize-workshop.git
+    destinations: |
+      - namespace: '*'
+        server: https://kubernetes.default.svc
+    extraFields: |
+      clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
+
+applications:
+
+  argocd:
+    annotations:
+      argocd.argoproj.io/sync-wave: '10'
+    destination:
+      namespace: argocd
+    source:
+      path: components/argocd
+
+  ingress-nginx:
+    annotations:
+      argocd.argoproj.io/sync-wave: '10'
+    destination:
+      namespace: ingress-nginx
+    source:
+      path: components/ingress-nginx
