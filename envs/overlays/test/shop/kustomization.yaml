@@ -7,8 +7,6 @@ namePrefix: test-
 commonLabels:
   environment: "test"
 
-namespace: microservices
-
 # includes the base configuration for the development environment and clusters
 
 resources:
