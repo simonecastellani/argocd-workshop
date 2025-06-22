@@ -4,6 +4,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  namespace: {{ $.Values.default.argo.namespace | default "argocd" }}
   name: {{ $key }}
 {{- if or $val.labels $.Values.default.app.labels }}
 {{- $appLabels := $val.labels }}

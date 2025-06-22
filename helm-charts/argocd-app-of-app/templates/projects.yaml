@@ -3,6 +3,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
+  namespace: {{ $.Values.default.argo.namespace | default "argocd" }}
   name: {{ $key }}
 {{- if $val.labels  }}
   labels:

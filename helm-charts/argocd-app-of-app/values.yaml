@@ -1,4 +1,7 @@
 default:
+  argo:
+    namespace: null
+
   project:
 
   app:
