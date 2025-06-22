@@ -3,7 +3,5 @@ kind: Kustomization
 # includes the base configuration for the development environment and clusters
 
 resources:
-  - ../../../components/argocd
-  - ../../../components/ingress-nginx
   - ../../../components/microservice1
   - ../../../components/microservice2
