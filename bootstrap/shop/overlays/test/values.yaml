@@ -21,7 +21,7 @@ projects:
     description: Project for overall microservices
     namespace: microservices
     sourceRepos:
-    - https://github.com/gnunn-gitops/cluster-config
+    - https://github.com/simonecastellani/kustomize-workshop.git
     destinations: |
       - namespace: '*'
         server: https://kubernetes.default.svc
